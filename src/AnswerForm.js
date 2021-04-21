@@ -25,6 +25,7 @@ export function AnswerForm(props) {
             event.preventDefault();
             // callMyFunction();
             checkIfCorrect(answer)
+            setAnswer('')    
             event.target.value = '';     
           }}
         };

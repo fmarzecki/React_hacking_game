@@ -6,7 +6,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import {Button, InputGroup, FormControl} from 'react-bootstrap'
 import {AnswerForm} from './AnswerForm'
 
-const colors = ['green', 'blue', 'purple', 'black', 'yellow'];
+const colors = ['green', 'blue', 'purple', 'black', 'yellow', 'orange', 'red'];
 let actualColor = ''
 const getRandomColor = ()=> {
   const diffColors = colors.filter((color)=> color !==actualColor)
@@ -70,21 +70,27 @@ export function Game(props) {
 
     const [streak, setStreak] = useState(0);
     const [maxStreak, setMaxStreak] = useState(0);
+    useEffect(()=> {
+      if (streak > maxStreak) {
+        setMaxStreak(streak);
+    }
+    return () => {
+
+    }
+    })
 
     const checkIfCorrect = (text) => {
-        
+  
         if(correctAnswer===text) {
             setStreak(prev=> prev+1);
             randomNewSquares()
             setTime(0)
+          
         }
         else{
                 setStreak(0);
                 setTime(timeLimit)
                 setLose(true)
-        }
-        if (streak > maxStreak) {
-            setMaxStreak(streak);
         }
     }
 
@@ -102,6 +108,7 @@ export function Game(props) {
       }
         } else {
             setLose(true)
+            setStreak(0)
         }
   },[timer])
 
@@ -110,7 +117,6 @@ export function Game(props) {
         setLose(false)
         setTime(0)
         setStreak(0)
-
     }
 
     return (
