@@ -125,12 +125,16 @@ const timerFunction = (seconds, functionName) => {
 }, 150); 
 }
 
+const [randomNumbers, setRandomNumbers] = useState([getRandomSquareNumber(),getRandomSquareNumber(),getRandomSquareNumber(),getRandomSquareNumber()])
+
     const handleAgainButton = () => {
         randomNewSquares();
         setLose(false)
         setTime(0)
         setStreak(0)
+        setRandomNumbers([getRandomSquareNumber(),getRandomSquareNumber(),getRandomSquareNumber(),getRandomSquareNumber()])
     }
+
 
     return (
     <div id='main'>
@@ -145,10 +149,10 @@ const timerFunction = (seconds, functionName) => {
             </div>
     
             <div className='Squares'>
-                <Squares style={squares[0]}/>
-                <Squares style={squares[1]}/>
-                <Squares style={squares[2]}/>
-                <Squares style={squares[3]}/>
+                <Squares number={randomNumbers[0]} style={squares[0]}/>
+                <Squares number={randomNumbers[1]} style={squares[1]}/>
+                <Squares number={randomNumbers[2]} style={squares[2]}/>
+                <Squares number={randomNumbers[3]} style={squares[3]}/>
             </div>
 
             <div className='progressBar'>

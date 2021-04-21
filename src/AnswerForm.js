@@ -28,6 +28,7 @@ export function AnswerForm(props) {
         };
       });
 
+      
     const handleButton = ()=> {
       props.handleAgainButton();
       setAnswer('')    

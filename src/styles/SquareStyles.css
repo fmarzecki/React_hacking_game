@@ -4,4 +4,13 @@
     width: 23%;
     background-color: rgb(110, 105, 122);
     margin: 2%;
+    position: relative;
+}
+
+#number {
+    font-size: 180px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
