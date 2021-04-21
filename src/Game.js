@@ -109,6 +109,7 @@ export function Game(props) {
         randomNewSquares();
         setLose(false)
         setTime(0)
+        setStreak(0)
 
     }
 
