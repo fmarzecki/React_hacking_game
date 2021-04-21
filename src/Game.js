@@ -6,23 +6,25 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import {Button, InputGroup, FormControl} from 'react-bootstrap'
 import {AnswerForm} from './AnswerForm'
 
-const colors = ['green', 'blue', 'purple', 'black', 'yellow'];
-let actualColor = ''
-const getRandomColor = ()=> {
-  const diffColor = colors.filter((color)=> color !=actualColor)
-    const randomColorIndex = Math.floor(Math.random() * colors.length);
-    actualColor = diffColor[randomColorIndex]
-    return actualColor;
-  }
+const colors = ['green', 'blue', 'purple', 'black', 'yellow', 'orange'];
+
 
 const getRandomSquareNumber = () => {
     return Math.floor(Math.random() * 4) ;
 }
 
+let actualColor = ''
+const getRandomColor = ()=> {
+  const diffColor = colors.filter((color)=> color !==actualColor)
+    const randomColorIndex = Math.floor(Math.random() * colors.length);
+    actualColor = diffColor[randomColorIndex]
+    return actualColor
+  }
 
 export function Game(props) {
 
-    const [color, setColor] = useState(null);
+
+   
 
     const [squareNumber, setSquareNumber] = useState(getRandomSquareNumber())
 
@@ -64,7 +66,6 @@ export function Game(props) {
     useEffect(()=> {
         setCorrectAnswer(squares[squareNumber].backgroundColor)
         return ()=> {
-
         } 
     })
 
