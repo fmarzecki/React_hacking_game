@@ -5,24 +5,14 @@ import Form from 'react-bootstrap/Form'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import {Button, InputGroup, FormControl} from 'react-bootstrap'
 import {AnswerForm} from './AnswerForm'
+import {getRandomColor} from './utilities'
+import {getRandomSquareNumber} from './utilities'
 
-const colors = ['green', 'blue', 'purple', 'black', 'yellow', 'orange', 'red'];
-let actualColor = ''
-const getRandomColor = ()=> {
-  const diffColors = colors.filter((color)=> color !==actualColor)
-    const randomColorIndex = Math.floor(Math.random() * diffColors.length);
-    actualColor = diffColors[randomColorIndex]
-    return diffColors[randomColorIndex];
-  }
 
-const getRandomSquareNumber = () => {
-    return Math.floor(Math.random() * 4) ;
-}
 
 
 export function Game(props) {
 
-    const [color, setColor] = useState(null);
 
     const [squareNumber, setSquareNumber] = useState(getRandomSquareNumber())
 
@@ -40,6 +30,8 @@ export function Game(props) {
           backgroundColor: getRandomColor()
         }
       ])
+
+    const [correctAnswer, setCorrectAnswer] = useState(squares[squareNumber].backgroundColor);
 
     const randomNewSquares = () => {
         setSquares([
@@ -60,11 +52,10 @@ export function Game(props) {
             
     }
     
-    const [correctAnswer, setCorrectAnswer] = useState(squares[squareNumber].backgroundColor);
+    
     useEffect(()=> {
         setCorrectAnswer(squares[squareNumber].backgroundColor)
         return ()=> {
-
         } 
     })
 
@@ -83,8 +74,10 @@ export function Game(props) {
   
         if(correctAnswer===text) {
             setStreak(prev=> prev+1);
+            document.getElementById('bar').value='100'
             randomNewSquares()
             setTime(0)
+            
           
         }
         else{
@@ -96,21 +89,42 @@ export function Game(props) {
 
     const [lose, setLose] = useState(false)
 
-    const [timeLimit, setTimeLimit] = useState(4)
+    const [timeLimit, setTimeLimit] = useState(6)
     const [timer, setTime] = useState(0);
 
     useEffect(()=> {
-        if (timer < timeLimit) {
-            const intervalId = setInterval(()=>setTime(prev=>prev+0.1), 100);
-            
-      return() => {
-          clearInterval(intervalId);
+      if (timer < timeLimit) {
+          const intervalId = setInterval(()=>setTime(prev=>prev+0.1), 100);
+          
+    return() => {
+        clearInterval(intervalId);
+    }
+      } else {
+          setLose(true)
+          setStreak(0)
+
       }
-        } else {
-            setLose(true)
-            setStreak(0)
-        }
-  },[timer])
+})
+
+
+// const lostFunction = ()=> {
+//   setStreak(0)
+//   setLose(true)
+// }
+
+const timerFunction = (seconds, functionName) => {
+  let start = Date.now(); // remember start time
+  let timer = setInterval(function() {
+  let timePassed = Date.now() - start;
+
+  if (timePassed/1000 >= seconds +0.100) {
+    clearInterval(timer); 
+    return;
+  }
+
+  functionName(timePassed/1000);
+}, 150); 
+}
 
     const handleAgainButton = () => {
         randomNewSquares();
@@ -128,7 +142,7 @@ export function Game(props) {
             <label for="volume">Speed:</label>
             <div id="setRange">
             <input type="range" id="volume" name="volume" 
-                min="0" max="12" value={timeLimit} autocomplete='off' onChange={(e)=>setTimeLimit(e.target.value)}/> {timeLimit} 
+                min="1" max="12" value={timeLimit} autocomplete='off' disabled={!lose} onChange={(e)=>{setTimeLimit(e.target.value);}}/> {timeLimit} 
             </div>
     
             <div className='Squares'>
@@ -139,7 +153,7 @@ export function Game(props) {
             </div>
 
             <div className='progressBar'>
-                <ProgressBar triped variant="reverse" now={(timer/timeLimit)*100} />
+                <ProgressBar id='bar' now={lose ? 100: (timer/timeLimit)*100} />
             </div>
             <div className='text'>
                 ENTER THE BACKGROUND COLOR ({squareNumber+1})

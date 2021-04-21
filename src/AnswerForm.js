@@ -10,13 +10,6 @@ export function AnswerForm(props) {
         setAnswer(target.value);
     }
 
-
-    const handleSubmit = (event)=> {
-        event.preventDefault();
-        alert('fsdf')
-    }
-
-    
     useEffect(() => {
         const listener = event => {
           if(answer.length>0) {
@@ -35,11 +28,16 @@ export function AnswerForm(props) {
         };
       });
 
+    const handleButton = ()=> {
+      props.handleAgainButton();
+      setAnswer('')    
+      document.getElementById('answer').value = ''; 
+    }
 
     return (
     <div>
         <input disabled={props.disabled} id='answer' onChange={handleChange} autocomplete='off' placeholder='Blue Square'  type='text'></input>
-        <button  onClick={props.handleAgainButton} className='btn_again' type='submit'> Again </button>
+        <button  onClick={handleButton} className='btn_again' type='submit'> Again </button>
     </div>    
     )
 }
