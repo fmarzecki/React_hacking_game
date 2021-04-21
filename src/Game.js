@@ -6,25 +6,23 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import {Button, InputGroup, FormControl} from 'react-bootstrap'
 import {AnswerForm} from './AnswerForm'
 
-const colors = ['green', 'blue', 'purple', 'black', 'yellow', 'orange'];
-
+const colors = ['green', 'blue', 'purple', 'black', 'yellow'];
+let actualColor = ''
+const getRandomColor = ()=> {
+  const diffColors = colors.filter((color)=> color !==actualColor)
+    const randomColorIndex = Math.floor(Math.random() * diffColors.length);
+    actualColor = diffColors[randomColorIndex]
+    return diffColors[randomColorIndex];
+  }
 
 const getRandomSquareNumber = () => {
     return Math.floor(Math.random() * 4) ;
 }
 
-let actualColor = ''
-const getRandomColor = ()=> {
-  const diffColor = colors.filter((color)=> color !==actualColor)
-    const randomColorIndex = Math.floor(Math.random() * colors.length);
-    actualColor = diffColor[randomColorIndex]
-    return actualColor
-  }
 
 export function Game(props) {
 
-
-   
+    const [color, setColor] = useState(null);
 
     const [squareNumber, setSquareNumber] = useState(getRandomSquareNumber())
 
@@ -66,6 +64,7 @@ export function Game(props) {
     useEffect(()=> {
         setCorrectAnswer(squares[squareNumber].backgroundColor)
         return ()=> {
+
         } 
     })
 
@@ -91,7 +90,7 @@ export function Game(props) {
 
     const [lose, setLose] = useState(false)
 
-    const [timeLimit, setTimeLimit] = useState(4)
+    const [timeLimit, setTimeLimit] = useState(6)
     const [timer, setTime] = useState(0);
 
     useEffect(()=> {
