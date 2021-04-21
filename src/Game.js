@@ -96,7 +96,7 @@ export function Game(props) {
 
     const [lose, setLose] = useState(false)
 
-    const [timeLimit, setTimeLimit] = useState(6)
+    const [timeLimit, setTimeLimit] = useState(4)
     const [timer, setTime] = useState(0);
 
     useEffect(()=> {
