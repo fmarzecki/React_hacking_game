@@ -6,7 +6,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import {Button, InputGroup, FormControl} from 'react-bootstrap'
 import {AnswerForm} from './AnswerForm'
 import {getRandomColor} from './utilities'
-import {getRandomSquareNumber, getRandomTextColor} from './utilities'
+import {getRandomSquareNumber} from './utilities'
 
 
 
@@ -19,19 +19,19 @@ export function Game(props) {
     const [squares, setSquares] = useState([
         {
           backgroundColor: getRandomColor(),
-          color: getRandomTextColor()
+          color: getRandomColor()
         },
         {
           backgroundColor: getRandomColor(),
-          color: getRandomTextColor()
+          color: getRandomColor()
         },
         {
           backgroundColor: getRandomColor(),
-          color: getRandomTextColor()
+          color: getRandomColor()
         },
         {
           backgroundColor: getRandomColor(),
-          color: getRandomTextColor()
+          color: getRandomColor()
         }
       ])
 
@@ -42,19 +42,19 @@ export function Game(props) {
         setSquares([
             {
                 backgroundColor: getRandomColor(),
-                color: getRandomTextColor()
+                color: getRandomColor()
               },
               {
                 backgroundColor: getRandomColor(),
-                color: getRandomTextColor()
+                color: getRandomColor()
               },
               {
                 backgroundColor: getRandomColor(),
-                color: getRandomTextColor()
+                color: getRandomColor()
               },
               {
                 backgroundColor: getRandomColor(),
-                color: getRandomTextColor()
+                color: getRandomColor()
               }
             ])         
     }
