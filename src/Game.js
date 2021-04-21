@@ -14,7 +14,7 @@ import {getRandomSquareNumber} from './utilities'
 export function Game(props) {
 
 
-    const [squareNumber, setSquareNumber] = useState(getRandomSquareNumber())
+    const [squareNumber, setSquareNumber] = useState([getRandomSquareNumber(),getRandomSquareNumber()])
 
     const [squares, setSquares] = useState([
         {
@@ -31,9 +31,10 @@ export function Game(props) {
         }
       ])
 
-    const [correctAnswer, setCorrectAnswer] = useState(squares[squareNumber].backgroundColor);
+    const [correctAnswer, setCorrectAnswer] = useState(squares[squareNumber[0]].backgroundColor +' ' + squares[squareNumber[1]].backgroundColor);
 
     const randomNewSquares = () => {
+      setSquareNumber([getRandomSquareNumber(),getRandomSquareNumber()])
         setSquares([
             {
                 backgroundColor: getRandomColor()
@@ -47,14 +48,12 @@ export function Game(props) {
               {
                 backgroundColor: getRandomColor()
               }
-            ])
-            setSquareNumber(getRandomSquareNumber())
-            
+            ])         
     }
     
     
     useEffect(()=> {
-        setCorrectAnswer(squares[squareNumber].backgroundColor)
+        setCorrectAnswer(squares[squareNumber[0]].backgroundColor +' ' + squares[squareNumber[1]].backgroundColor)
         return ()=> {
         } 
     })
@@ -156,11 +155,11 @@ const timerFunction = (seconds, functionName) => {
                 <ProgressBar id='bar' now={lose ? 100: (timer/timeLimit)*100} />
             </div>
             <div className='text'>
-                ENTER THE BACKGROUND COLOR ({squareNumber+1})
+                ENTER THE BACKGROUND COLOR ({squareNumber[0]+1}) and ({squareNumber[1]+1})
             </div>
             <div>
                 {lose ? <a id="loseText"> Correct Answer: </a> : ''}
-                {lose ? correctAnswer : ''}
+                {lose ? correctAnswer: ''}
             </div>
             <div >
                 <AnswerForm disabled={lose} handleAgainButton={handleAgainButton}checkIfCorrect={checkIfCorrect}/>
