@@ -18,42 +18,50 @@ export function Game(props) {
 
     const [squares, setSquares] = useState([
         {
-          backgroundColor: getRandomColor()
+          backgroundColor: getRandomColor(),
+          color: getRandomColor()
         },
         {
-          backgroundColor: getRandomColor()
+          backgroundColor: getRandomColor(),
+          color: getRandomColor()
         },
         {
-          backgroundColor: getRandomColor()
+          backgroundColor: getRandomColor(),
+          color: getRandomColor()
         },
         {
-          backgroundColor: getRandomColor()
+          backgroundColor: getRandomColor(),
+          color: getRandomColor()
         }
       ])
 
-    const [correctAnswer, setCorrectAnswer] = useState(squares[squareNumber[0]].backgroundColor +' ' + squares[squareNumber[1]].backgroundColor);
+    const [correctAnswer, setCorrectAnswer] = useState(squares[squareNumber[0]].backgroundColor +' ' + squares[squareNumber[1]].color);
 
     const randomNewSquares = () => {
       setSquareNumber([getRandomSquareNumber(),getRandomSquareNumber()])
         setSquares([
             {
-                backgroundColor: getRandomColor()
+                backgroundColor: getRandomColor(),
+                color: getRandomColor()
               },
               {
-                backgroundColor: getRandomColor()
+                backgroundColor: getRandomColor(),
+                color: getRandomColor()
               },
               {
-                backgroundColor: getRandomColor()
+                backgroundColor: getRandomColor(),
+                color: getRandomColor()
               },
               {
-                backgroundColor: getRandomColor()
+                backgroundColor: getRandomColor(),
+                color: getRandomColor()
               }
             ])         
     }
     
     
     useEffect(()=> {
-        setCorrectAnswer(squares[squareNumber[0]].backgroundColor +' ' + squares[squareNumber[1]].backgroundColor)
+        setCorrectAnswer(squares[squareNumber[0]].backgroundColor +' ' + squares[squareNumber[1]].color)
         return ()=> {
         } 
     })
@@ -159,7 +167,7 @@ const [randomNumbers, setRandomNumbers] = useState([getRandomSquareNumber(),getR
                 <ProgressBar id='bar' now={lose ? 100: (timer/timeLimit)*100} />
             </div>
             <div className='text'>
-                ENTER THE BACKGROUND COLOR ({squareNumber[0]+1}) and ({squareNumber[1]+1})
+                ENTER THE BACKGROUND COLOR ({squareNumber[0]+1}) AND TEXT COLOR ({squareNumber[1]+1})
             </div>
             <div>
                 {lose ? <a id="loseText"> Correct Answer: </a> : ''}
