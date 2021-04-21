@@ -9,6 +9,16 @@ export const getRandomColor = ()=> {
     return diffColors[randomColorIndex];
   }
 
+  let actualNumber= -1;
 export const getRandomSquareNumber = () => {
-    return Math.floor(Math.random() * 4) ;
+    let number;
+    while (true) {
+      number = Math.floor(Math.random() * 4) ;
+      if (number !== actualNumber) {
+        actualNumber = number;
+        return actualNumber;
+        break;
+      }
+    }
+    
 }
