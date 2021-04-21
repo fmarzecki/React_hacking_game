@@ -9,6 +9,17 @@ export const getRandomColor = ()=> {
     return diffColors[randomColorIndex];
   }
 
+  
+let actualTextColor = ''
+
+export const getRandomTextColor = ()=> {
+    const diffColors = colors.filter((color)=> color !==actualTextColor)
+    const randomColorIndex = Math.floor(Math.random() * diffColors.length);
+    actualTextColor = diffColors[randomColorIndex]
+    return diffColors[randomColorIndex];
+  }
+
+
   let actualNumber= -1;
 export const getRandomSquareNumber = () => {
     let number;
