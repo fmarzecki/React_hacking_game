@@ -1,0 +1,59 @@
+.GameScreen {
+    /* height: 25em; */
+    background-color: rgb(56, 51, 78);
+    min-height: 70vh;
+}
+
+#main {
+    width: 70%;
+}
+
+#jo {
+    height: 40px;
+}
+.Squares {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    height:auto;
+}
+
+.progressBar {
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    height:auto;
+    margin: 3%;
+}
+
+#setRange {
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+}
+
+.text {
+    font-size: 1em;
+    margin-bottom: 1%;
+}
+
+
+.Streak {
+   
+    margin: 0 auto 20px;
+    text-align: center;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    width: fit-content;
+    background-color: #0a478d;
+    padding: 12px;
+    border-radius: 18px;
+}
+
+#loseText {
+    color: red;
+}
