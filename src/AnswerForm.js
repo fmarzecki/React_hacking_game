@@ -38,7 +38,7 @@ export function AnswerForm(props) {
     return (
     <div>
         <input disabled={props.disabled} id='answer' onChange={handleChange} autocomplete='off' placeholder='Blue Square'  type='text'></input>
-        <button  onClick={handleButton} className='btn_again' type='submit'> Again </button>
+        <button disabled={!(props.disabled)} onClick={handleButton} className='btn_again' type='submit'> Again </button>
     </div>    
     )
 }

@@ -1,4 +1,4 @@
-const colors = ['green', 'blue', 'purple', 'black', 'yellow', 'orange', 'red'];
+const colors = ['green', 'blue', 'purple', 'yellow', 'orange', 'red'];
 
 let actualColor = ''
 
@@ -19,17 +19,30 @@ export const getRandomTextColor = ()=> {
     return diffColors[randomColorIndex];
   }
 
-
-  let actualNumber= -1;
 export const getRandomSquareNumber = () => {
-    let number;
-    while (true) {
-      number = Math.floor(Math.random() * 4) ;
-      if (number !== actualNumber) {
-        actualNumber = number;
-        return actualNumber;
-        break;
-      }
+let arr = [];
+    while(arr.length < 4){
+        let r = Math.floor(Math.random() * 4);
+        if(arr.indexOf(r) === -1) arr.push(r);
     }
-    
+    return arr;
+}
+export const getRandomAnswerNumber = () => {
+let arr = [];
+    while(arr.length < 2){
+        let r = Math.floor(Math.random() * 4);
+        if(arr.indexOf(r) === -1) arr.push(r);
+    }
+    return arr;
+}
+
+export const propertieses = {'backgroundColor': 'BACKGROUND COLOR' , 'color' : 'NUMBER COLOR'}
+
+let lastProperty = '';
+export const getRandomProperty = ()=> {
+  const diffProperty = Object.keys(propertieses)
+  let number = Math.floor(Math.floor(Math.random() * diffProperty.length));
+  lastProperty = diffProperty[number]
+
+  return diffProperty[number]
 }
