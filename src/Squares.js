@@ -49,17 +49,17 @@ export const timerFunction = (setTime, setSquare, squareParam, setNumbers, setTe
 
 
 function draw(timePassed) {
-  document.getElementsByClassName('number')[0].style.fontSize = (240 -(timePassed/9) )+ 'px';
-  document.getElementsByClassName('number')[1].style.fontSize = (240 -(timePassed/9) )+ 'px';
-  document.getElementsByClassName('number')[2].style.fontSize = (240 -(timePassed/9) )+ 'px';
-  document.getElementsByClassName('number')[3].style.fontSize = (240 -(timePassed/9) )+ 'px';
+  document.getElementsByClassName('number')[0].style.fontSize = (180 -(timePassed/9) )+ 'px';
+  document.getElementsByClassName('number')[1].style.fontSize = (180 -(timePassed/9) )+ 'px';
+  document.getElementsByClassName('number')[2].style.fontSize = (180 -(timePassed/9) )+ 'px';
+  document.getElementsByClassName('number')[3].style.fontSize = (180 -(timePassed/9) )+ 'px';
 }
 
  export function setCorrectFont() {
-  document.getElementsByClassName('number')[0].style.fontSize = 240+ 'px';
-  document.getElementsByClassName('number')[1].style.fontSize = 240+ 'px';
-  document.getElementsByClassName('number')[2].style.fontSize = 240+ 'px';
-  document.getElementsByClassName('number')[3].style.fontSize = 240+ 'px';
+  document.getElementsByClassName('number')[0].style.fontSize = '2em';
+  document.getElementsByClassName('number')[1].style.fontSize = '2em';
+  document.getElementsByClassName('number')[2].style.fontSize = '2em';
+  document.getElementsByClassName('number')[3].style.fontSize = '2em';
 }
 
 
