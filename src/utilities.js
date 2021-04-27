@@ -36,7 +36,7 @@ let arr = [];
     return arr;
 }
 
-export const propertieses = {'backgroundColor': 'BACKGROUND COLOR' , 'color' : 'NUMBER COLOR'}
+export const propertieses = {'backgroundColor': 'BACKGROUND COLOR' , 'color' : 'NUMBER COLOR', 'shapeBackground' : "SHAPE COLOR"}
 
 let lastProperty = '';
 export const getRandomProperty = ()=> {

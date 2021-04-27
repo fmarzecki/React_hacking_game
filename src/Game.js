@@ -14,69 +14,35 @@ import clockTicking from './clock.mp3'
 
 export function Game(props) {
 
-  
-
   // const [play, { stop, isPlaying }] = useSound(clockTicking);
-
 
     const [squareNumber, setSquareNumber] = useState(getRandomSquareNumber())
     const [numbers, setNumbers] = useState(squareNumber)
+
     const [correctAnswerNumbers, setCorrectAnswerNumbers] = useState(getRandomAnswerNumber())
     
-    const [squares, setSquares] = useState([
+     const [squares, setSquares] = useState([
         {
           backgroundColor: getRandomColor(),
+          shapeBackground:getRandomColor(),
           color: getRandomColor()
         },
         {
           backgroundColor: getRandomColor(),
+          shapeBackground: getRandomColor(),
           color: getRandomColor()
         },
         {
           backgroundColor: getRandomColor(),
+          shapeBackground: getRandomColor(),
           color: getRandomColor()
         },
         {
           backgroundColor: getRandomColor(),
+          shapeBackground: getRandomColor(),
           color: getRandomColor()
         }
       ])
-
-    // const getRealNumbersAnimation = ()=> {
-
-    //   const timerFunction = () => {
-    //     let start = Date.now(); // remember start time
-    //     let timer = setInterval(function() {
-    //     let timePassed = Date.now() - start;
-      
-    //     if (timePassed >= 4000) {
-    //       clearInterval(timer); 
-    //       return;
-    //     }
-    
-    //     return (210 -(timePassed/5) )
-    //   }, 20); 
-    // }
-
-
-    //   setSquares([ {
-    //     backgroundColor: '',
-    //     fontSize: timerFunction()
-    //   },
-    //   {
-    //     backgroundColor: ''
-    //   },
-    //   {
-    //     backgroundColor: ''
-    //   },
-    //   {
-    //     backgroundColor: ''
-    //   }])
-    // }  
-
-    // useEffect(()=>{
-    //   getRealNumbersAnimation();
-    // })
 
     const [correctAnswer, setCorrectAnswer] = useState(squares[correctAnswerNumbers[0]].backgroundColor +' ' + squares[correctAnswerNumbers[1]].color);
 
@@ -92,22 +58,26 @@ export function Game(props) {
       setSquareNumber(getNumber)
       setNumbers(getNumber)
         setSquares([
-            {
-                backgroundColor: getRandomColor(),
-                color: getRandomColor()
-              },
-              {
-                backgroundColor: getRandomColor(),
-                color: getRandomColor()
-              },
-              {
-                backgroundColor: getRandomColor(),
-                color: getRandomColor()
-              },
-              {
-                backgroundColor: getRandomColor(),
-                color: getRandomColor()
-              }
+          {
+            backgroundColor: getRandomColor(),
+            shapeBackground: getRandomColor(),
+            color: getRandomColor()
+          },
+          {
+            backgroundColor: getRandomColor(),
+            shapeBackground: getRandomColor(),
+            color: getRandomColor()
+          },
+          {
+            backgroundColor: getRandomColor(),
+            shapeBackground: getRandomColor(),
+            color: getRandomColor()
+          },
+          {
+            backgroundColor: getRandomColor(),
+            shapeBackground: getRandomColor(),
+            color: getRandomColor()
+          }
             ])         
     }
     
@@ -184,7 +154,8 @@ export function Game(props) {
             ENTER {propertieses[properties[0]]} ({correctAnswerNumbers[0]+1}) AND {propertieses[properties[1]]} ({correctAnswerNumbers[1]+1})
       </div>
     )
-    
+
+
     return (
     <div id='main'>
         <div className='Streak'>
@@ -196,11 +167,11 @@ export function Game(props) {
             <input type="range" id="volume" name="volume" 
                 min="1" max="12" value={timeLimit} autocomplete='off' disabled={!lose} onChange={(e)=>{setTimeLimit(e.target.value);}}/> {timeLimit} 
             </div>
-            <div className='Squares' >
-                <Squares number={numbers[0]+1} style={squares[squareNumber[0]]}/>
-                <Squares number={numbers[1]+1} style={squares[squareNumber[1]]}/>
-                <Squares number={numbers[2]+1} style={squares[squareNumber[2]]}/>
-                <Squares number={numbers[3]+1} style={squares[squareNumber[3]]}/>
+            <div className='Squares'>
+                <Squares number={numbers[0]+1} shapeColor={squares[squareNumber[0]]['shapeBackground']} backgroundStyle={squares[squareNumber[0]]}/>
+                <Squares number={numbers[1]+1} shapeColor={squares[squareNumber[1]]['shapeBackground']} backgroundStyle={squares[squareNumber[1]]}/>
+                <Squares number={numbers[2]+1} shapeColor={squares[squareNumber[2]]['shapeBackground']} backgroundStyle={squares[squareNumber[2]]}/>
+                <Squares number={numbers[3]+1} shapeColor={squares[squareNumber[3]]['shapeBackground']} backgroundStyle={squares[squareNumber[3]]}/>
             </div>
             {showText ? text : ''}
             <div className='progressBar'>

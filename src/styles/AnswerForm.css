@@ -8,6 +8,11 @@
     font-weight: bold;
     color: white;
 }
+@media only screen and (max-width: 400px) {
+    #answer {
+        width: 45%;
+    }
+  }
 .btn_again {
     margin-right: -40px;
     margin-left: 40px;

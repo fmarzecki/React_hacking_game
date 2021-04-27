@@ -12,18 +12,23 @@ export const timerFunction = (setTime, setSquare, squareParam, setNumbers, setTe
       setSquare([
         {
             backgroundColor: 'black',
+            shapeBackground: 'black',
+            color: 'white'
+            
+          },
+          {
+            backgroundColor: 'black',
+            shapeBackground: 'black',
             color: 'white'
           },
           {
             backgroundColor: 'black',
+            shapeBackground: 'black',
             color: 'white'
           },
           {
             backgroundColor: 'black',
-            color: 'white'
-          },
-          {
-            backgroundColor: 'black',
+            shapeBackground: 'black',
             color: 'white'
           }
         ])
@@ -66,12 +71,12 @@ function draw(timePassed) {
 export function Squares(props) {
 
     return (
-        <div style={props.style} className='background'>
-            {/* <div class='square'> */}
+        <div style={props.backgroundStyle} className='background'>
+            <div className='square' style={{backgroundColor: props.shapeColor}}>
                 <div className='number'>
                     {props.number}
                 </div>
-            {/* </div> */}
+            </div>
         </div>
     )
 }
