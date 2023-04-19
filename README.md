@@ -1,4 +1,4 @@
-# Try to figure out how to play
+# Try to figure out how to play 
 
 ## https://hacking-game-by-felipe.netlify.app/
 
